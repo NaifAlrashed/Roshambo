@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         
         let controller = segue.destination as! ResultsViewController
         
-        determineWinnerWithmanipulatingMessageAndImage()
+        determineWinnerWhileChangingMessageAndImage()
         
         controller.image.image = image
         controller.resultsOutput.text = message
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     }
     
     
-    func determineWinnerWithmanipulatingMessageAndImage () {
+    func determineWinnerWhileChangingMessageAndImage () {
         switch user! {
         case .rock where oponent == .rock:
             
@@ -88,8 +88,8 @@ class ViewController: UIViewController {
             
         case .paper where oponent == .rock:
             
-            message = "rock crushes scissors, you lose!"
-            image = UIImage(named: "RockCrushesScissors")
+            message = "paper covers rock, you win!"
+            image = UIImage(named: "PaperCoversRock")
             
         case .paper where oponent == .paper:
             
@@ -120,5 +120,30 @@ class ViewController: UIViewController {
             print("error")
         }
     }
+    @IBAction func paperAction(_ sender: Any) {
+        user = .paper
+        
+        performSegue(withIdentifier: "paper", sender: nil)
+    }
+    @IBAction func rockAction(_ sender: Any) {
+        user = .rock
+        
+        let controller: ResultsViewController
+        
+        controller = self.storyboard?.instantiateViewController(withIdentifier: "resultsStorboard")
+            as! ResultsViewController
+        
+        determineWinnerWhileChangingMessageAndImage()
+        
+        controller.image?.image = image
+        controller.resultsOutput?.text = message
+        
+        present(controller, animated: true, completion: nil)
+        
+        
+        
+    }
+    
+    
 }
 

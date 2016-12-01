@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="SHD-ut-thG">
             <objects>
-                <viewController id="hPn-er-drX" sceneMemberID="viewController">
+                <viewController id="hPn-er-drX" customClass="ViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c77-66-XJj"/>
                         <viewControllerLayoutGuide type="bottom" id="5rE-dh-Sgg"/>
@@ -29,6 +29,9 @@
                                     <constraint firstAttribute="width" constant="75" id="mSq-p7-FXt"/>
                                 </constraints>
                                 <state key="normal" image="paper"/>
+                                <connections>
+                                    <action selector="paperAction:" destination="hPn-er-drX" eventType="touchUpInside" id="UJH-hk-18Y"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BO8-Uo-8xb">
                                 <rect key="frame" x="16" y="294" width="343" height="65"/>
@@ -36,10 +39,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="299-s2-2kc">
                                         <rect key="frame" x="0.0" y="0.0" width="171.5" height="65"/>
                                         <state key="normal" image="rock"/>
+                                        <connections>
+                                            <action selector="rockAction:" destination="hPn-er-drX" eventType="touchUpInside" id="qX8-ty-XDy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzM-ty-RBH">
                                         <rect key="frame" x="171.5" y="0.0" width="171.5" height="65"/>
                                         <state key="normal" image="scissors"/>
+                                        <connections>
+                                            <segue destination="gav-s5-cfs" kind="modal" identifier="scissors" id="WTx-b2-797"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -63,15 +72,18 @@
                             <constraint firstItem="kpZ-v5-iEF" firstAttribute="top" secondItem="BO8-Uo-8xb" secondAttribute="bottom" constant="50" id="x5Y-85-Wp9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="gav-s5-cfs" kind="modal" identifier="paper" id="Zog-iO-YLq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mNE-Hr-1r2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-583" y="-56"/>
         </scene>
-        <!--View Controller-->
+        <!--Results View Controller-->
         <scene sceneID="BXG-ek-loZ">
             <objects>
-                <viewController id="gav-s5-cfs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resultsStorboard" id="gav-s5-cfs" customClass="ResultsViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Sn-MS-Hr1"/>
                         <viewControllerLayoutGuide type="bottom" id="CNM-8X-UYR"/>
@@ -99,6 +111,9 @@
                                     <constraint firstAttribute="width" constant="75" id="P33-vd-l2R"/>
                                 </constraints>
                                 <state key="normal" title="Play Again"/>
+                                <connections>
+                                    <action selector="dismissButtonClicked:" destination="gav-s5-cfs" eventType="touchUpInside" id="dOG-bv-wTF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -113,27 +128,14 @@
                             <constraint firstItem="dwd-8H-hNJ" firstAttribute="leading" secondItem="HwF-ad-DLQ" secondAttribute="leadingMargin" constant="20" id="wip-0g-Qy3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="image" destination="WE7-Cp-zG7" id="2Ay-jv-EAr"/>
+                        <outlet property="resultsOutput" destination="dwd-8H-hNJ" id="nIl-J0-sbs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtl-gM-VAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="79" y="-56"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Kn5-fp-736">
-            <objects>
-                <viewController id="m2x-FI-V0D" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sAF-a5-feC"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ew9-MD-tnU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="0VA-9X-nO0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="16h-3D-w1E" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="201" y="-56"/>
         </scene>
     </scenes>
     <resources>
@@ -141,4 +143,7 @@
         <image name="rock" width="75" height="65"/>
         <image name="scissors" width="75" height="65"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="WTx-b2-797"/>
+    </inferredMetricsTieBreakers>
 </document>

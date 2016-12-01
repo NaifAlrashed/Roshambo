@@ -32,4 +32,7 @@ class ResultsViewController: UIViewController {
     }
     */
 
+    @IBAction func dismissButtonClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
