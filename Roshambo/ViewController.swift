@@ -63,8 +63,8 @@ class ViewController: UIViewController {
         
         determineWinnerWhileChangingMessageAndImage()
         
-        controller.image.image = image
-        controller.resultsOutput.text = message
+        controller.image = image
+        controller.message = message
         
     }
     
@@ -135,8 +135,8 @@ class ViewController: UIViewController {
         
         determineWinnerWhileChangingMessageAndImage()
         
-        controller.image?.image = image
-        controller.resultsOutput?.text = message
+        controller.image = image
+        controller.message = message
         
         present(controller, animated: true, completion: nil)
         

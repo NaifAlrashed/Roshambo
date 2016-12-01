@@ -130,6 +130,7 @@
                     </view>
                     <connections>
                         <outlet property="image" destination="WE7-Cp-zG7" id="2Ay-jv-EAr"/>
+                        <outlet property="imageView" destination="WE7-Cp-zG7" id="MnJ-pw-zeQ"/>
                         <outlet property="resultsOutput" destination="dwd-8H-hNJ" id="nIl-J0-sbs"/>
                     </connections>
                 </viewController>

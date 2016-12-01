@@ -11,26 +11,27 @@ import UIKit
 class ResultsViewController: UIViewController {
     
     
-    @IBOutlet weak var image: UIImageView!
+    var image: UIImage!
+    var message: String!
+    
+    @IBOutlet weak var imageView: UIImageView!
 
     @IBOutlet weak var resultsOutput: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        imageView = UIImageView()
+        resultsOutput = UILabel()
+        resultsOutput.text = message
+        imageView.image = image
+        
     }
-    */
 
     @IBAction func dismissButtonClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
